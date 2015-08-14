@@ -1,0 +1,1 @@
+# BugHunt Leaderboard plugin
