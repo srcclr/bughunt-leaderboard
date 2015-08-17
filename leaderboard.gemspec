@@ -1,4 +1,5 @@
-$:.push File.expand_path("../lib", __FILE__)
+lib =  File.expand_path("../lib", __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 # Maintain your gem's version:
 require "leaderboard/version"
@@ -18,5 +19,8 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 4.2.3"
+
   s.add_development_dependency "rspec-rails", "~> 3.0"
+  s.add_development_dependency "rubocop"
+  s.add_development_dependency "pry-byebug"
 end
