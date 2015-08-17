@@ -6,7 +6,7 @@ module Leaderboard
 
     def index
       respond_to do |format|
-        format.json { render json: { user: Leaderboard::User.first.to_json } }
+        format.json { render json: {} }
         format.html do
           render "default/empty"
         end
