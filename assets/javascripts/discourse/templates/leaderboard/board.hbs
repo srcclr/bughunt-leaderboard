@@ -2,17 +2,21 @@
   <h1>Leaderboard</h1>
 
   <table class="topic-list">
-    <tr class="topic-list-item">
-      <th>Rank</th>
-      <th>Username</th>
-      <th>Total</th>
-    </tr>
+    <thead>
+      <tr class="topic-list-item">
+        <th>Rank</th>
+        {{#each col in model.board_query.columns}}
+          <th>{{col}}</th>
+        {{/each}}
+      </tr>
+    </thead>
     <tbody>
-      {{#each board in boards}}
+      {{#each model.board_query.data as |user index|}}
         <tr class="topic-list-item">
-          <td>{{board.id}}</td>
-          <td>{{board.username}}</td>
-          <td>{{board.id}}</td>
+          <td>{{inc index}}</td>
+          {{#each field in user}}
+            <td>{{field}}</td>
+          {{/each}}
         </tr>
       {{/each}}
     </tbody>

@@ -4,6 +4,8 @@ module Leaderboard
   describe BoardQuery do
     let(:query) { described_class.new }
 
+    include_context 'sample board data'
+
     describe '#call' do
       let(:expected_table) do
         'Some table here'

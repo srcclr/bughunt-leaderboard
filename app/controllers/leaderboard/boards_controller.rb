@@ -6,7 +6,7 @@ module Leaderboard
 
     def index
       respond_to do |format|
-        format.json { render json: Leaderboard::User.all }
+        format.json { render json: Leaderboard::BoardQuery.new.call, serializer: Leaderboard::BoardQuerySerializer }
         format.html do
           render "default/empty"
         end

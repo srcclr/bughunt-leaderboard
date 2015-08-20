@@ -44,15 +44,16 @@ module Leaderboard
     def select_board_data_text
       %Q(
         SELECT
-          summary.user_id, summary.username, sum(summary.points) AS total_points,
-          sum(CASE WHEN summary.challenge_id = 1 THEN summary.points ELSE null END) as points_1,
-          sum(CASE WHEN summary.challenge_id = 2 THEN summary.points ELSE null END) as points_2,
-          sum(CASE WHEN summary.challenge_id = 3 THEN summary.points ELSE null END) as points_3,
-          sum(CASE WHEN summary.challenge_id = 4 THEN summary.points ELSE null END) as points_4,
-          sum(CASE WHEN summary.challenge_id = 5 THEN summary.points ELSE null END) as points_5
+          summary.username as "Username",
+          COALESCE(sum(CASE WHEN summary.challenge_id = 1 THEN summary.points ELSE null END), '-') as points_1,
+          COALESCE(sum(CASE WHEN summary.challenge_id = 2 THEN summary.points ELSE null END), '-') as points_2,
+          COALESCE(sum(CASE WHEN summary.challenge_id = 3 THEN summary.points ELSE null END), '-') as points_3,
+          COALESCE(sum(CASE WHEN summary.challenge_id = 4 THEN summary.points ELSE null END), '-') as points_4,
+          COALESCE(sum(CASE WHEN summary.challenge_id = 5 THEN summary.points ELSE null END), '-') as points_5,
+          sum(summary.points) AS total_points
         FROM users_with_points summary
-        GROUP BY 1, 2
-        ORDER BY 3 DESC
+        GROUP BY username
+        ORDER BY total_points DESC
       )
     end
   end

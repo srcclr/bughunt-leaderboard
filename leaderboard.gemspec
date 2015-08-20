@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.2.3"
   s.add_dependency "mysql2", "~> 0.3.19"
 
+  s.add_development_dependency "database_cleaner"
   s.add_development_dependency "factory_girl"
   s.add_development_dependency "rspec-rails", "~> 3.0"
   s.add_development_dependency "rspec-its"

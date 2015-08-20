@@ -3,6 +3,7 @@ bot_defaults: &bot_defaults
   pool: 5
   host: localhost
   username: root
+  flags: 65536
 
 bot_development:
   database: bot_development
