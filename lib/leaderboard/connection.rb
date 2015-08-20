@@ -3,7 +3,7 @@ module Leaderboard
     class << self
       def query(text)
         client.abandon_results!
-        client.query(text)
+        client.query(text, { as: :array })
       end
 
       private

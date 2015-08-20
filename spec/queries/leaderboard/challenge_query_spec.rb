@@ -9,10 +9,10 @@ module Leaderboard
     describe '#call' do
       let(:expected_table) do
         [
-          { "id" => 2, "name" => "challenge1"} ,
-          { "id" => 3, "name" => "NumberTwo" },
-          { "id" => 4, "name" => "The3rd" },
-          { "id" => 5, "name" => "Fore" }
+          [2, "challenge1"],
+          [3, "NumberTwo"],
+          [4, "The3rd"],
+          [5, "Fore"]
         ]
       end
 

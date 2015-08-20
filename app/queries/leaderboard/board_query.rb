@@ -44,16 +44,29 @@ module Leaderboard
     def select_board_data_text
       %Q(
         SELECT
-          summary.username as "Username",
-          COALESCE(sum(CASE WHEN summary.challenge_id = 2 THEN summary.points ELSE null END), '-') as "points_2",
-          COALESCE(sum(CASE WHEN summary.challenge_id = 3 THEN summary.points ELSE null END), '-') as "points_3",
-          COALESCE(sum(CASE WHEN summary.challenge_id = 4 THEN summary.points ELSE null END), '-') as "points_4",
-          COALESCE(sum(CASE WHEN summary.challenge_id = 5 THEN summary.points ELSE null END), '-') as "points_5",
-          sum(summary.points) AS total_points
+          summary.username AS "Username",
+          #{challenge_totals},
+          sum(summary.points) AS "Total"
         FROM users_with_points summary
         GROUP BY username
-        ORDER BY total_points DESC
+        ORDER BY sum(summary.points) DESC
+        LIMIT #{@limit}
+        OFFSET #{@offset}
       )
+    end
+
+    def challenge_totals
+      challenges.map do |challenge|
+        %Q(
+          COALESCE(
+            SUM(CASE WHEN summary.challenge_id = #{challenge.first} THEN summary.points ELSE null END), '-'
+          ) AS "#{challenge.second}"
+        )
+      end.join(",")
+    end
+
+    def challenges
+      Leaderboard::ChallengeQuery.new.call.entries
     end
   end
 end

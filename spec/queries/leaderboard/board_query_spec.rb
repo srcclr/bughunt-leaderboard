@@ -11,7 +11,7 @@ module Leaderboard
 
       context 'fields' do
         let(:expected_fields) do
-          ["Username", "points_2", "points_3", "points_4", "points_5", "total_points"]
+          ["Username", "challenge1", "NumberTwo", "The3rd", "Fore", "Total"]
         end
 
         it 'should return table columns' do
@@ -22,38 +22,10 @@ module Leaderboard
       context 'data' do
         let(:expected_data) do
           [
-            {
-              "Username"=>"cherlerngebert2",
-              "points_2"=>"7",
-              "points_3"=>"0",
-              "points_4"=>"7",
-              "points_5"=>"0",
-              "total_points"=>14.0
-            },
-            {
-              "Username"=>"timstrazz",
-              "points_2"=>"-",
-              "points_3"=>"-",
-              "points_4"=>"3",
-              "points_5"=>"7",
-              "total_points"=>10.0
-            },
-            {
-              "Username"=>"jjarmoc",
-              "points_2"=>"3",
-              "points_3"=>"5",
-              "points_4"=>"1",
-              "points_5"=>"-",
-              "total_points"=>9.0
-            },
-            {
-              "Username"=>"pretentiousderp",
-              "points_2"=>"0",
-              "points_3"=>"-",
-              "points_4"=>"7",
-              "points_5"=>"0",
-              "total_points"=>7.0
-            }
+            ["cherlerngebert2", "7", "0", "7", "0", 14.0],
+            ["timstrazz", "-", "-", "3", "7", 10.0],
+            ["jjarmoc", "3", "5", "1", "-", 9.0],
+            ["pretentiousderp", "0", "-", "7", "0", 7.0]
           ]
         end
 
