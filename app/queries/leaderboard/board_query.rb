@@ -13,17 +13,12 @@ module Leaderboard
     private
 
     def create_view
-      client.query(create_view_text)
+      Leaderboard::Connection.query(create_view_text)
     end
 
     def select_board_data
-      client.query(select_board_data_text)
+      Leaderboard::Connection.query(select_board_data_text)
     end
-
-    def client
-      @client ||= Mysql2::Client.new(DB_CONFIG["bot_#{ENV['RAILS_ENV']}"])
-    end
-
 
     def create_view_text
       %Q(

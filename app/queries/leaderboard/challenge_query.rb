@@ -1,14 +1,10 @@
 module Leaderboard
   class ChallengeQuery
     def call
-      client.query(select_challenges_query)
+      Leaderboard::Connection.query(select_challenges_query)
     end
 
     private
-
-    def client
-      @client ||= Mysql2::Client.new(DB_CONFIG["bot_#{ENV['RAILS_ENV']}"])
-    end
 
     def select_challenges_query
       %Q(

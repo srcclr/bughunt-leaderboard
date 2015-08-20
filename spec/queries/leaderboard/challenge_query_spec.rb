@@ -4,7 +4,7 @@ module Leaderboard
   describe ChallengeQuery do
     let(:query) { described_class.new }
 
-    include_context 'sample board data'
+    before { prepare_sample_data }
 
     describe '#call' do
       let(:expected_table) do
