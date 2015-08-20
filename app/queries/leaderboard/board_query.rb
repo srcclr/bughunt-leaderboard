@@ -13,12 +13,17 @@ module Leaderboard
     private
 
     def create_view
-      Leaderboard::Base.connection.execute(create_view_text)
+      client.query(create_view_text)
     end
 
     def select_board_data
-      Leaderboard::Base.connection.execute(select_board_data_text)
+      client.query(select_board_data_text)
     end
+
+    def client
+      @client ||= Mysql2::Client.new(DB_CONFIG["bot_#{ENV['RAILS_ENV']}"])
+    end
+
 
     def create_view_text
       %Q(
@@ -36,7 +41,7 @@ module Leaderboard
         FROM users
         LEFT JOIN submissions ON users.id = submissions.user_id
         LEFT JOIN challenges ON challenges.id = submissions.challenge_id
-          AND users.exclude_leaderboard = 0 AND challenges.exclude_leaderboard = 0
+        WHERE users.exclude_leaderboard = 0 AND challenges.exclude_leaderboard = 0
         )
       )
     end
@@ -45,11 +50,10 @@ module Leaderboard
       %Q(
         SELECT
           summary.username as "Username",
-          COALESCE(sum(CASE WHEN summary.challenge_id = 1 THEN summary.points ELSE null END), '-') as points_1,
-          COALESCE(sum(CASE WHEN summary.challenge_id = 2 THEN summary.points ELSE null END), '-') as points_2,
-          COALESCE(sum(CASE WHEN summary.challenge_id = 3 THEN summary.points ELSE null END), '-') as points_3,
-          COALESCE(sum(CASE WHEN summary.challenge_id = 4 THEN summary.points ELSE null END), '-') as points_4,
-          COALESCE(sum(CASE WHEN summary.challenge_id = 5 THEN summary.points ELSE null END), '-') as points_5,
+          COALESCE(sum(CASE WHEN summary.challenge_id = 2 THEN summary.points ELSE null END), '-') as "points_2",
+          COALESCE(sum(CASE WHEN summary.challenge_id = 3 THEN summary.points ELSE null END), '-') as "points_3",
+          COALESCE(sum(CASE WHEN summary.challenge_id = 4 THEN summary.points ELSE null END), '-') as "points_4",
+          COALESCE(sum(CASE WHEN summary.challenge_id = 5 THEN summary.points ELSE null END), '-') as "points_5",
           sum(summary.points) AS total_points
         FROM users_with_points summary
         GROUP BY username
