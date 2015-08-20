@@ -5,13 +5,13 @@
     <thead>
       <tr class="topic-list-item">
         <th>Rank</th>
-        {{#each col in model.board_query.columns}}
+        {{#each col in model.columns}}
           <th>{{col}}</th>
         {{/each}}
       </tr>
     </thead>
     <tbody>
-      {{#each model.board_query.data as |user index|}}
+      {{#each model.data as |user index|}}
         <tr class="topic-list-item">
           <td>{{inc index}}</td>
           {{#each field in user}}
