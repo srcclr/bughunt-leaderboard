@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     leaderboard (0.0.1)
+      active_model_serializers
       mysql2 (~> 0.3.19)
       rails (~> 4.2.3)
 
@@ -27,6 +28,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_model_serializers (0.9.3)
+      activemodel (>= 3.2)
     activejob (4.2.3)
       activesupport (= 4.2.3)
       globalid (>= 0.3.0)
@@ -52,6 +55,7 @@ GEM
       columnize (= 0.9.0)
     coderay (1.1.0)
     columnize (0.9.0)
+    database_cleaner (1.4.1)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     globalid (0.3.6)
@@ -113,6 +117,9 @@ GEM
     rspec-expectations (3.2.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
+    rspec-its (1.2.0)
+      rspec-core (>= 3.0.0)
+      rspec-expectations (>= 3.0.0)
     rspec-mocks (3.2.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
@@ -148,8 +155,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  database_cleaner
   leaderboard!
   pry-byebug
+  rspec-its
   rspec-rails (~> 3.0)
   rubocop
 

@@ -16,12 +16,15 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "Rakefile", "README.md"]
-  s.test_files = Dir["test/**/*"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.2.3"
   s.add_dependency "mysql2", "~> 0.3.19"
+  s.add_dependency "active_model_serializers"
 
+  s.add_development_dependency "database_cleaner"
   s.add_development_dependency "rspec-rails", "~> 3.0"
+  s.add_development_dependency "rspec-its"
   s.add_development_dependency "rubocop"
   s.add_development_dependency "pry-byebug"
 end
