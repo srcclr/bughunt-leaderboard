@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Leaderboard
   describe ChallengeQuery do
@@ -6,7 +6,7 @@ module Leaderboard
 
     before { prepare_sample_data }
 
-    describe '#call' do
+    describe "#call" do
       let(:expected_table) do
         [
           [2, "challenge1"],
@@ -18,7 +18,7 @@ module Leaderboard
 
       subject { query.call }
 
-      it 'return active challenges' do
+      it "return active challenges" do
         expect(subject.entries).to eq(expected_table)
       end
     end

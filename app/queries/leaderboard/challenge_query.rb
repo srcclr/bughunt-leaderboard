@@ -7,7 +7,7 @@ module Leaderboard
     private
 
     def select_challenges_query
-      %Q(
+      %(
         SELECT id, name
         FROM challenges
         WHERE exclude_leaderboard = 0

@@ -1,25 +1,25 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Leaderboard
   describe BoardQuery do
     let(:query) { described_class.new }
 
-    describe '#call' do
+    describe "#call" do
       subject { query.call }
 
       before { prepare_sample_data }
 
-      context 'fields' do
+      context "fields" do
         let(:expected_fields) do
-          ["Username", "challenge1", "NumberTwo", "The3rd", "Fore", "Total"]
+          %w(Username challenge1 NumberTwo The3rd Fore Total)
         end
 
-        it 'should return table columns' do
+        it "should return table columns" do
           expect(subject.fields).to eq(expected_fields)
         end
       end
 
-      context 'data' do
+      context "data" do
         let(:expected_data) do
           [
             ["cherlerngebert2", "7", "0", "7", "0", 14.0],
@@ -29,7 +29,7 @@ module Leaderboard
           ]
         end
 
-        it 'should return leaderboard' do
+        it "should return leaderboard" do
           expect(subject.entries).to eq(expected_data)
         end
       end

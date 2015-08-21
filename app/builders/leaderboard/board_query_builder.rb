@@ -6,7 +6,7 @@ module Leaderboard
     end
 
     def build
-      %Q(
+      %(
         SELECT
           summary.username AS "Username",
           #{challenge_totals},
@@ -23,7 +23,7 @@ module Leaderboard
 
     def challenge_totals
       challenges.map do |challenge|
-        %Q(
+        %(
           COALESCE(
             SUM(CASE WHEN summary.challenge_id = #{challenge.first} THEN summary.points ELSE null END), '-'
           ) AS "#{challenge.second}"
