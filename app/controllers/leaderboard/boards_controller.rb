@@ -4,6 +4,10 @@ module Leaderboard
 
     respond_to :html, :json
 
+    rescue_from Mysql2::Error do
+      render json: {}, status: 200
+    end
+
     def index
       respond_to do |format|
         format.json { render json: Leaderboard::BoardQuery.new.call, serializer: Leaderboard::BoardQuerySerializer }

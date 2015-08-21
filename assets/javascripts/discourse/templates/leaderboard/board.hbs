@@ -1,24 +1,30 @@
 <div class="leaderboard">
   <h1>Leaderboard</h1>
 
-  <table class="topic-list">
-    <thead>
-      <tr class="topic-list-item">
-        <th>Rank</th>
-        {{#each col in model.columns}}
-          <th>{{col}}</th>
-        {{/each}}
-      </tr>
-    </thead>
-    <tbody>
-      {{#each model.data as |user index|}}
+  {{#if model.columns}}
+    <table class="topic-list">
+      <thead>
         <tr class="topic-list-item">
-          <td>{{inc index}}</td>
-          {{#each field in user}}
-            <td>{{field}}</td>
+          <th>Rank</th>
+          {{#each col in model.columns}}
+            <th>{{col}}</th>
           {{/each}}
         </tr>
-      {{/each}}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {{#each model.data as |user index|}}
+          <tr class="topic-list-item">
+            <td>{{inc index}}</td>
+            {{#each field in user}}
+              <td>{{field}}</td>
+            {{/each}}
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <div class="error-page">
+      <div class="reason">No challenges found</div>
+    </div>
+  {{/if}}
 </div>
