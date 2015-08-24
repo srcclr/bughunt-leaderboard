@@ -11,3 +11,10 @@ bot_development:
 bot_test:
   database: bot_test
   <<: *bot_defaults
+
+bot_production:
+  <<: *bot_defaults
+  database: ENV["BUGHUNT_DB_NAME"]
+  host: <%= ENV["BUGHUNT_DB_HOST"] %>
+  username: <%= ENV["BUGHUNT_DB_USERNAME"] %>
+  password: <%= ENV["BUGHUNT_DB_PASSWORD"] %>

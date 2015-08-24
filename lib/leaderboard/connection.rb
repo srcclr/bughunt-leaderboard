@@ -10,7 +10,7 @@ module Leaderboard
 
       def client
         @client ||= Mysql2::Client.new(
-          DB_CONFIG["bot_#{ENV['RAILS_ENV']}"].merge(flags: Mysql2::Client::MULTI_STATEMENTS)
+          (DB_CONFIG["bot_#{ENV['RAILS_ENV']}"] || {}).merge(flags: Mysql2::Client::MULTI_STATEMENTS)
         )
       end
     end
