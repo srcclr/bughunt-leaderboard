@@ -15,9 +15,9 @@ module Leaderboard
     def select_fields
       %(
         SELECT
-          users.id AS user_id, users.username, challenges.id AS challenge_id, challenges.name,
+          users.id AS user_id, users.username, challenges.id AS challenge_id,
           CASE
-            WHEN submissions.is_correct = 0 THEN '0'
+            WHEN submissions.is_correct = 0 OR challenges.date_end >= CURDATE() THEN '0'
             WHEN submissions.is_correct = 1
             THEN GREATEST(0, 7 - DATEDIFF(submissions.last_updated, challenges.date_begin))
             ELSE '-'
