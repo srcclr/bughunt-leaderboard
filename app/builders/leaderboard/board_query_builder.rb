@@ -22,9 +22,9 @@ module Leaderboard
     def challenge_totals
       challenges.map do |challenge|
         %(
-          COALESCE(
-            SUM(CASE WHEN summary.challenge_id = #{challenge.first} THEN summary.points ELSE null END), '-'
-          ) AS "#{challenge.second}"
+          CASE WHEN '#{challenge.third}' >= CURDATE() THEN '' ELSE
+            COALESCE(SUM(CASE WHEN summary.challenge_id = #{challenge.first} THEN summary.points ELSE null END), '-')
+          END AS "#{challenge.second}"
         )
       end.join(",")
     end
