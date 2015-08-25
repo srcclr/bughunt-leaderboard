@@ -12,6 +12,7 @@ module Leaderboard
         FROM challenges
         WHERE exclude_leaderboard = 0
         ORDER BY date_begin
+        LIMIT 12
       )
     end
   end

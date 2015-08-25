@@ -7,11 +7,9 @@ module Leaderboard
 
     def build
       %(
-        SELECT
-          summary.username AS "Username",
-          #{challenge_totals},
-          sum(summary.points) AS "Total"
+        SELECT summary.username AS "Username", #{challenge_totals}, sum(summary.points) AS "Total"
         FROM users_with_points summary
+        WHERE challenge_id IN (#{challenge_ids})
         GROUP BY username
         ORDER BY sum(summary.points) DESC
         LIMIT #{@limit}
@@ -31,8 +29,12 @@ module Leaderboard
       end.join(",")
     end
 
+    def challenge_ids
+      challenges.map(&:first).join(", ")
+    end
+
     def challenges
-      Leaderboard::ChallengeQuery.new.call.entries
+      @challenges ||= Leaderboard::ChallengeQuery.new.call.entries
     end
   end
 end
