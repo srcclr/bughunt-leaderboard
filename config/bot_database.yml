@@ -1,0 +1,20 @@
+bot_defaults: &bot_defaults
+  adapter: mysql2
+  pool: 5
+  host: localhost
+  username: root
+
+bot_development:
+  database: bot_development
+  <<: *bot_defaults
+
+bot_test:
+  database: bot_test
+  <<: *bot_defaults
+
+bot_production:
+  <<: *bot_defaults
+  database: ENV["BUGHUNT_DB_NAME"]
+  host: <%= ENV["BUGHUNT_DB_HOST"] %>
+  username: <%= ENV["BUGHUNT_DB_USERNAME"] %>
+  password: <%= ENV["BUGHUNT_DB_PASSWORD"] %>
