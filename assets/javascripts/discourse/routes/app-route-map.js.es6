@@ -1,3 +1,3 @@
 export default function() {
-    this.resource('leaderboard');
+    this.resource('bughunt');
 }
