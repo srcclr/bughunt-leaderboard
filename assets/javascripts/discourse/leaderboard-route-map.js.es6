@@ -1,5 +1,5 @@
 export default function() {
-  this.resource('leaderboard', function() {
-    this.route('leaderboard', { path: '/' });
+  this.resource('bughunt', function() {
+    this.route('bughunt', { path: '/' });
   });
 }
