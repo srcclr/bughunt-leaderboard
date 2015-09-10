@@ -1,7 +1,12 @@
 export default Discourse.BughuntRoute = Discourse.Route.extend({
-  beforeModel: function() { return this.redirectIfLoginRequired(); },
+  beforeModel() { return this.redirectIfLoginRequired(); },
 
-  model: function() {
+  model() {
     return Discourse.ajax('/bughunt');
+  },
+
+  setupController(controller, model) {
+    controller.set('model', model);
+    this.controllerFor('application').set('showFooter', true);
   }
 });
