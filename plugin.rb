@@ -7,7 +7,6 @@
 # register_asset("stylesheets/leaderboard/application.css.scss")
 
 gem "mysql2", "0.3.19"
-gem "responders", "2.0.0"
 
 require(File.expand_path("../lib/leaderboard", __FILE__))
 
