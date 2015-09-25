@@ -1,5 +1,16 @@
 <div class="leaderboard">
-  <h1>Leaderboard</h1>
+  <div class="leaderboard-header inline-block">
+    <h1>Leaderboard</h1>
+    <a
+      href="https://twitter.com/share"
+      class="twitter-share-button btn-primary twitter"
+      data-text="Check out the BugHunt leaderboard @srcclr - https://openx.srcclr.io/bughunt"
+      data-size="large"
+      data-dnt="true">
+      {{fa-icon "twitter" modifier="lg"}}
+      Tweet
+    </a>
+  </div>
 
   {{#if model.columns}}
     <table class="topic-list">
