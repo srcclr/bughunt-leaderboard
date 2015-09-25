@@ -26,10 +26,15 @@
         </tr>
       </thead>
       <tbody>
-        {{#each model.data as |user index|}}
+        {{#each model.data as |item index|}}
           <tr class="topic-list-item">
             <td>{{inc index}}</td>
-            {{#each field in user}}
+            <td>
+              <a href="https://twitter.com/{{ item.userName }}">
+                {{ item.userName }}
+              </a>
+            </td>
+            {{#each field in item.contestResults}}
               <td>{{field}}</td>
             {{/each}}
           </tr>
