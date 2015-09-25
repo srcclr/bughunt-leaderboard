@@ -1,5 +1,19 @@
 <div class="leaderboard">
-  <h1>Leaderboard</h1>
+  <div class="grid grid--middle">
+    <div class="grid__item col-1-2">
+      <h1>Leaderboard</h1>
+    </div>
+    <div class="grid__item col-1-2 text--right">
+      <a
+        href="https://twitter.com/share?url=https%3A%2F%2Fopenx.srcclr.io%2Fbughunt&amp;text=Check%20out%20the%20BugHunt%20leaderboard%20@srcclr"
+        target="_blank"
+        title="Share on Twitter"
+        class="btn-primary twitter">
+        {{fa-icon "twitter" modifier="lg"}}
+        Tweet
+      </a>
+    </div>
+  </div>
 
   {{#if model.columns}}
     <table class="topic-list">
