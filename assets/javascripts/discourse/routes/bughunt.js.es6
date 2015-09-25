@@ -1,8 +1,16 @@
 export default Discourse.BughuntRoute = Discourse.Route.extend({
   beforeModel() { return this.redirectIfLoginRequired(); },
 
-  model() {
-    return Discourse.ajax('/bughunt');
+  model: function() {
+    return Discourse.ajax('/bughunt').then((result) => {
+      return {
+        columns: result.columns,
+        data: _.map(result.data, (item) => {
+          let [userName, ...contestResults] = item;
+          return {userName, contestResults}
+        })
+      }
+    });
   },
 
   setupController(controller, model) {

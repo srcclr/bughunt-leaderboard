@@ -20,11 +20,11 @@ module Leaderboard
     private
 
     def challenge_totals
-      challenges.map do |challenge|
+      challenges.each_with_index.map do |challenge, index|
         %(
           CASE WHEN '#{challenge.third}' >= CURDATE() THEN '' ELSE
             COALESCE(SUM(CASE WHEN summary.challenge_id = #{challenge.first} THEN summary.points ELSE null END), '-')
-          END AS "#{challenge.second}"
+          END AS "Week #{index + 1}"
         )
       end.join(",")
     end
