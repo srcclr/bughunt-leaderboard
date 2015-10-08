@@ -2,12 +2,12 @@ module Leaderboard
   class BoardQuerySerializer < ActiveModel::Serializer
     self.root = false
 
-    attributes :columns, :data
+    attributes :challenges, :data
 
     private
 
-    def columns
-      object.fields
+    def challenges
+      object.fields[1..-2]
     end
 
     def data

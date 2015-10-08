@@ -24,17 +24,17 @@ module Leaderboard
     private
 
     def challenge_totals
-      challenges.each_with_index.map do |challenge, index|
+      challenges.map do |challenge|
         %(
           CASE WHEN '#{challenge.third}' >= CURDATE() THEN '' ELSE
             COALESCE(SUM(CASE WHEN summary.challenge_id = #{challenge.first} THEN summary.points ELSE null END), '-')
-          END AS "Week #{index + 1}"
+          END AS "#{link_to_challenge(challenge.second)}"
         )
       end.join(",")
     end
 
     def future_challenge_totals
-      (challenges.count + 1..CHALLENGE_COUNT).map { |n| %('' as "Week #{n}") }.join(",")
+      (challenges.count + 1..CHALLENGE_COUNT).map { %('' as "#") }.join(",")
     end
 
     def challenge_ids
@@ -43,6 +43,11 @@ module Leaderboard
 
     def challenges
       @challenges ||= Leaderboard::ChallengeQuery.new.call.entries.last(CHALLENGE_COUNT)
+    end
+
+    def link_to_challenge(challenge_name)
+      name = challenge_name.titleize.gsub(/\s/, "")
+      challenge_name.present? ? "http://github.com/srcclr/bughunt/tree/master/#{name}" : "#"
     end
   end
 end
