@@ -18,14 +18,22 @@
     </div>
   </div>
 
-  {{#if model.columns}}
+  {{#if model.challenges}}
     <table class="topic-list">
       <thead>
         <tr class="topic-list-item">
           <th>Rank</th>
-          {{#each col in model.columns}}
-            <th>{{col}}</th>
+          <th>Username</th>
+          {{#each model.challenges as |col index|}}
+            <th class="{{current_challenge_class index model.currentIndex}}">
+              {{#if col}}
+                <a href="{{unbound col}}">Week {{inc index}}</a>
+              {{else}}
+                Week {{inc index}}
+              {{/if}}
+            </th>
           {{/each}}
+          <th>Total</th>
         </tr>
       </thead>
       <tbody>

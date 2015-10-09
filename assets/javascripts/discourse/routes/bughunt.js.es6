@@ -4,7 +4,8 @@ export default Discourse.BughuntRoute = Discourse.Route.extend({
   model: function() {
     return Discourse.ajax('/bughunt').then((result) => {
       return {
-        columns: result.columns,
+        challenges: result.challenges,
+        currentIndex: result.current_index,
         data: _.map(result.data, (item) => {
           let [userName, ...contestResults] = item;
           return {userName, contestResults}
