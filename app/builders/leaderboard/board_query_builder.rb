@@ -34,7 +34,7 @@ module Leaderboard
     end
 
     def future_challenge_totals
-      (challenges.count + 1..CHALLENGE_COUNT).map { %('' as "#") }.join(",")
+      (challenges.count + 1..CHALLENGE_COUNT).map { %('' as "") }.join(",")
     end
 
     def challenge_ids

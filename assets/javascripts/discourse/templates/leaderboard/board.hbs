@@ -25,8 +25,12 @@
           <th>Rank</th>
           <th>Username</th>
           {{#each model.challenges as |col index|}}
-            <th>
-              <a href="{{unbound col}}">Week {{inc index}}</a>
+            <th class="{{current_challenge_class index model.currentIndex}}">
+              {{#if col}}
+                <a href="{{unbound col}}">Week {{inc index}}</a>
+              {{else}}
+                Week {{inc index}}
+              {{/if}}
             </th>
           {{/each}}
           <th>Total</th>

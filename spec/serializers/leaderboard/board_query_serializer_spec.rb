@@ -9,7 +9,8 @@ module Leaderboard
       let(:expected_json) do
         {
           challenges: %w(FirstChallenge),
-          data: [1, 2, 3]
+          data: [1, 2, 3],
+          current_index: 1
         }
       end
 
