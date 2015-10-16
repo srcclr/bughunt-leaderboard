@@ -29,11 +29,11 @@ LOCK TABLES `challenges` WRITE;
 
 INSERT INTO `challenges` (`id`, `name`, `url`, `solutions`, `date_begin`, `date_end`, `exclude_leaderboard`)
 VALUES
-    (1,'ExampleChallenge','https://www.google.com','[\"42\"]','2010-01-01','2010-01-01',1),
-    (2,'challenge1','https://www.google.com','[\"100\"]','2015-06-01','2015-06-07',0),
-    (3,'NumberTwo','https://www.google.com','[\"100\"]','2015-06-08','2015-06-14',0),
-    (4,'The3rd','https://www.google.com','[\"100\"]','2015-06-15','2015-06-21',0),
-    (5,'Fore','https://www.google.com','[\"100\"]','2015-06-22','2015-06-28',0);
+    (1,'ExampleChallenge','https://github.com/ExampleChallenge','[\"42\"]','2010-01-01','2010-01-01',1),
+    (2,'challenge1','https://github.com/challenge1','[\"100\"]','2015-06-01','2015-06-07',0),
+    (3,'NumberTwo','https://github.com/NumberTwo','[\"100\"]','2015-06-08','2015-06-14',0),
+    (4,'The3rd','https://github.com/The3rd','[\"100\"]','2015-06-15','2015-06-21',0),
+    (5,'Fore','https://github.com/Fore','[\"100\"]','2015-06-22','2015-06-28',0);
 
 /*!40000 ALTER TABLE `challenges` ENABLE KEYS */;
 UNLOCK TABLES;

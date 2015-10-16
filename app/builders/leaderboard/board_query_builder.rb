@@ -45,9 +45,8 @@ module Leaderboard
       @challenges ||= Leaderboard::ChallengeQuery.new.call.entries.last(CHALLENGE_COUNT)
     end
 
-    def link_to_challenge(challenge_name)
-      name = challenge_name.titleize.gsub(/\s/, "")
-      challenge_name.present? ? "http://github.com/srcclr/bughunt/tree/master/#{name}" : "#"
+    def link_to_challenge(challenge_url)
+      challenge_url.presence || "#"
     end
   end
 end

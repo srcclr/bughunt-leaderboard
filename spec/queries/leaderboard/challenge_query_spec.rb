@@ -7,10 +7,10 @@ module Leaderboard
     describe "#call" do
       let(:expected_table) do
         [
-          [2, "challenge1", Date.parse("2015-06-07")],
-          [3, "NumberTwo", Date.parse("2015-06-14")],
-          [4, "The3rd", Date.parse("2015-06-21")],
-          [5, "Fore", Date.parse("2015-06-28")]
+          [2, "https://github.com/challenge1", Date.parse("2015-06-07")],
+          [3, "https://github.com/NumberTwo", Date.parse("2015-06-14")],
+          [4, "https://github.com/The3rd", Date.parse("2015-06-21")],
+          [5, "https://github.com/Fore", Date.parse("2015-06-28")]
         ]
       end
 
