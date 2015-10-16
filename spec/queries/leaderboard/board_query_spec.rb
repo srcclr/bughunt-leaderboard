@@ -11,7 +11,7 @@ module Leaderboard
 
       context "fields" do
         let(:expected_fields) do
-          %w(Username http://github.com/srcclr/bughunt/tree/master/Challenge1 Total)
+          %w(Username https://github.com/challenge1 Total)
         end
 
         it "should return table columns" do

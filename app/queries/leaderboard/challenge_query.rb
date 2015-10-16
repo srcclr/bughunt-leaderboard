@@ -8,7 +8,7 @@ module Leaderboard
 
     def select_challenges_query
       %(
-        SELECT id, name, date_end
+        SELECT id, url, date_end
         FROM challenges
         WHERE exclude_leaderboard = 0
         AND date_begin <= CURDATE()
